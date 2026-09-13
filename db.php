@@ -1,14 +1,20 @@
 <?php
 
-$host = "127.0.0.1";
-$user = "root";
-$password = "";
-$database = "bilhandlare";
+$config = require __DIR__ . "/db_config.php";
 
-$conn = new mysqli($host, $user, $password, $database);
+$conn = new mysqli(
+    $config["host"],
+    $config["user"],
+    $config["password"],
+    $config["database"],
+    $config["port"]
+);
 
 if ($conn->connect_error) {
-    die("Databasanslutningen misslyckades: " . $conn->connect_error);
+    die(
+        "Databasanslutningen misslyckades: "
+        . $conn->connect_error
+    );
 }
 
 ?>
